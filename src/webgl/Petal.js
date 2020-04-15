@@ -50,11 +50,7 @@ export default class Petal extends THREE.Mesh {
     this.name = 'Petal';
     this.mass = Math.random();
     this.rotateDirection = Math.round(Math.random()) * 2 - 1;
-    this.scale.set(
-      this.mass * 1.2 + 0.7,
-      this.mass * 1.2 + 0.7,
-      this.mass * 1.2 + 0.7
-    );
+    this.scale.set(this.mass * 0.01, this.mass * 0.01, this.mass * 0.01);
     this.rotation.set(
       MathEx.radians((Math.random() * 2 - 1) * 60),
       0,

@@ -12,7 +12,7 @@ const DURATION_SCREAM = 2.5;
 const DELAY_SCREAM = 2.5;
 
 export default class SkullBody extends THREE.Group {
-  constructor(geometry1, geometry2) {
+  constructor(geometry1) {
     // Create Object3D
     super();
 
@@ -47,10 +47,8 @@ export default class SkullBody extends THREE.Group {
     });
 
     this.head = new THREE.Mesh(geometry1, this.material);
-    this.jaw = new THREE.Mesh(geometry2, this.material);
 
     this.add(this.head);
-    this.add(this.jaw);
 
     this.name = 'SkullBody';
     this.timeShow = 0;
@@ -161,15 +159,10 @@ export default class SkullBody extends THREE.Group {
     // loop animation
     const loopDegree = (Math.sin(this.timeLoop) * 0.5 + 0.5) * 8;
 
-    this.head.rotation.set(
-      MathEx.radians(alphaScream * -24 - loopDegree),
-      0,
-      0
-    );
-    this.jaw.rotation.set(MathEx.radians(alphaScream * 24 + loopDegree), 0, 0);
+    this.head.rotation.set(MathEx.radians(alphaScream - loopDegree), 80, 80);
 
     // calculation the scale.
-    const scale = alphaShow * 0.3 + 0.7 + alphaHide * 0.1 + alphaScream * 0.2;
+    const scale = alphaShow * 0.2 + 0.2 + alphaHide * 0.1 + alphaScream * 0.2;
     this.scale.set(scale, scale, scale);
 
     // fluctuation of the color

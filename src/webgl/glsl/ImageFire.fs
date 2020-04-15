@@ -19,7 +19,7 @@ void main() {
   float noiseR = texture2D(noiseTex, updateUv + vec2(time * 0.1, 0.0)).r;
   float noiseG = texture2D(noiseTex, updateUv + vec2(time * 0.2, 0.0)).g;
 
-  vec3 rgb = convertHsvToRgb(vec3(0.1, 0.5, 0.75));
+  vec3 rgb = convertHsvToRgb(vec3(0.59, 1, 1));
   float opacity = vOpacity * smoothstep(0.4, 0.6, noiseR);
 
   if (opacity < 0.01) {

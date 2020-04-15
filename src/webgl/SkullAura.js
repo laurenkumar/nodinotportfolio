@@ -77,12 +77,12 @@ export default class SkullAura extends THREE.Mesh {
     this.name = 'SkullAura';
     this.timeShow = 0;
     this.mouseForce = 0;
-    this.hsv1Base = new THREE.Vector3(0.15, 0.62, 1);
+    this.hsv1Base = new THREE.Vector3(0.59, 1, 1);
     this.strengthBase = 1.8;
     this.colorRangeMinBase = 0.3;
     this.isActive = false;
     this.isShown = false;
-    this.position.set(0, 0, 8);
+    this.position.set(0, -4, 8);
   }
   start(postEffectTex, noiseTex) {
     this.isActive = true;

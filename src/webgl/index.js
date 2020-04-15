@@ -25,7 +25,7 @@ const renderTarget3 = new THREE.WebGLRenderTarget();
 const scenePE = new THREE.Scene();
 const cameraPE = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 2);
 
-const petalHsv1 = new THREE.Vector3(0.09, 0.7, 0.35);
+const petalHsv1 = new THREE.Vector3(0.59, 1, 1);
 const petalHsv2 = new THREE.Vector3(0.09, 0.46, 0.1);
 const petalHsv3 = new THREE.Vector3(0.09, 0.72, 0.18);
 
@@ -129,8 +129,8 @@ export default class WebGLContent {
       return result;
     };
     const assetsObj = [
-      require('@/assets/obj/SkullHead.obj'),
-      require('@/assets/obj/CherryBlossom.obj')
+      require('@/assets/obj/disc.obj'),
+      require('@/assets/obj/Feather.obj')
     ];
     const assetsImgs = [
       require(`@/assets/img/webgl/title.${webpExe}`),

@@ -28,7 +28,7 @@ export default class Skull extends THREE.Group {
     this.time = 0;
     this.timeShow = 0;
     this.timeHide = 0;
-    this.positionBase = new THREE.Vector3(0, 0, -3);
+    this.positionBase = new THREE.Vector3(0, 3, -3);
     this.lookV = new THREE.Vector3();
     this.lookA = new THREE.Vector3();
     this.lookAnchor = new THREE.Vector3();
