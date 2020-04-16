@@ -3,6 +3,8 @@ import Router from 'vue-router';
 import Meta from 'vue-meta';
 
 import Home from './views/Home.vue';
+import Articles from './views/Articles.vue';
+import Article from './views/Article.vue';
 import Works from './views/Works.vue';
 import WhoIAm from './views/WhoIAm.vue';
 import Error404 from './views/Error404.vue';
@@ -28,6 +30,16 @@ const router = new Router({
       path: '/who-i-am',
       name: 'who-i-am',
       component: WhoIAm
+    },
+    {
+      path: '/articles',
+      name: 'blog',
+      component: Articles
+    },
+    {
+      path: '/articles/:uid',
+      name: 'article',
+      component: Article
     },
     {
       path: '*',

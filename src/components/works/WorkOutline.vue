@@ -133,13 +133,12 @@ export default {
       .p-work-outline__link-line(
         :class = 'linkLineClassnames'
         )
-      a.p-work-outline__link(
-        :href = 'href'
-        target = '_blank'
+      router-link.p-work-outline__link(
+        to = '/articles'
         @mouseenter = 'enter'
         @mouseleave = 'leave'
         )
-        |Launch
+        |Lire
 </template>
 
 <style lang="scss">
