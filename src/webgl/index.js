@@ -41,8 +41,6 @@ export default class WebGLContent {
     this.petalRotateGroup;
     this.petalFallGroup;
     this.image;
-    this.worksText;
-    this.whoiamText;
     this.bg;
     this.intersector;
     this.postEffectBright;
@@ -83,12 +81,6 @@ export default class WebGLContent {
       }),
       import('@/webgl/Image').then(module => {
         this.image = new module.default();
-      }),
-      import('@/webgl/WorksText').then(module => {
-        this.worksText = new module.default();
-      }),
-      import('@/webgl/WhoIamText').then(module => {
-        this.whoiamText = new module.default();
       }),
       import('@/webgl/Background').then(module => {
         this.bg = new module.default();
@@ -136,8 +128,6 @@ export default class WebGLContent {
       require(`@/assets/img/webgl/title.${webpExe}`),
       require(`@/assets/img/webgl/noise.${webpExe}`),
       require(`@/assets/img/webgl/noise_burn.${webpExe}`),
-      require(`@/assets/img/webgl/works_text.${webpExe}`),
-      require(`@/assets/img/webgl/whoiam_text.${webpExe}`),
       require('@/assets/img/webgl/thumb_blank.png'),
       require(`@/assets/img/webgl/articles_rap.${webpExe}`),
       require(`@/assets/img/webgl/articles_societe.${webpExe}`)
@@ -160,25 +150,18 @@ export default class WebGLContent {
       const titleTex = response[2];
       const noiseTex = response[3];
       const noiseBurnTex = response[4];
-      const worksTextTex = response[5];
-      const whoiamTextTex = response[6];
-      const imgTexes = response.slice(7);
+      const imgTexes = response.slice(5);
 
       noiseTex.wrapS = THREE.RepeatWrapping;
       noiseTex.wrapT = THREE.RepeatWrapping;
       noiseBurnTex.wrapS = THREE.RepeatWrapping;
       noiseBurnTex.wrapT = THREE.RepeatWrapping;
-      worksTextTex.wrapS = THREE.RepeatWrapping;
-      worksTextTex.wrapT = THREE.RepeatWrapping;
-
       // Add the webgl objects to the scene.
       scene.add(this.skull);
       scene.add(this.title);
       scene.add(this.petalFallGroup);
       scene.add(this.petalRotateGroup);
       scene.add(this.image);
-      scene.add(this.worksText);
-      scene.add(this.whoiamText);
       scene.add(this.bg);
       scene.add(this.intersector);
 
@@ -204,8 +187,6 @@ export default class WebGLContent {
         petalHsv3
       );
       this.image.start(noiseBurnTex, imgTexes);
-      this.worksText.start(worksTextTex);
-      this.whoiamText.start(whoiamTextTex);
       this.bg.start(noiseTex);
     });
 
@@ -246,15 +227,12 @@ export default class WebGLContent {
   }
   showWorksObjs(index, direction, prevPosFromWorks) {
     this.image.change(index, direction + prevPosFromWorks);
-    this.worksText.change(index, direction, prevPosFromWorks);
   }
   showWhoIAmObjs(bool) {
     if (bool === true) {
       this.petalFallGroup.show();
-      this.whoiamText.show();
     } else {
       this.petalFallGroup.hide();
-      this.whoiamText.hide();
     }
   }
   update() {
@@ -288,8 +266,6 @@ export default class WebGLContent {
     this.petalRotateGroup.update(time);
     this.title.update(time);
     this.image.update(time);
-    this.worksText.update(time);
-    this.whoiamText.update(time);
     this.bg.update(time);
     this.postEffectBloom.update(time);
 

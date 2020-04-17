@@ -1,13 +1,14 @@
 <template>
   <!-- Vue conditional to check if there is any content in document -->
-  <div v-if="hasContent" class="p-view-wrap">
+  <div
+    v-if="hasContent"
+    class="p-view-wrap"
+    ref="articlescat-wrap"
+    :style="styles"
+  >
     <!-- Vue reference for blog posts component -->
-    <blog-posts />
+    <blog-posts :num="1" :scrollY="scrollY" :parallaxRatio="0.1" />
   </div>
-  <!-- If no content return message -->
-  <p v-else class="p-view-wrap">
-    Please add some content to your blog home document.
-  </p>
 </template>
 
 <script>
@@ -150,7 +151,7 @@ export default {
       }
     },
     resize() {
-      this.clientHeight = this.$refs['whoiam-wrap'].clientHeight;
+      this.clientHeight = this.$refs['articlescat-wrap'].clientHeight;
       this.anchorY = MathEx.clamp(
         this.anchorY,
         0,

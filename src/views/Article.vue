@@ -1,20 +1,29 @@
 <template>
-  <div class="p-view-wrap">
-    <div class="p-whoiam-wrap">
-      <div class="back">
-        <router-link to="./">Retour</router-link>
+  <div class="p-view-wrap" :style="styles" ref="whoiam-wrap">
+    <div class="p-whoiam-wrap" ref="articles-wrap">
+      <div class="p-whoiam-wrap__in">
+        <div class="back">
+          <router-link to="./">Retour</router-link>
+        </div>
+        <h1 class="blog-title p-whoiam-heading">
+          {{ $prismic.richTextAsPlain(fields.title) }}
+        </h1>
+        <p class="blog-post-meta">
+          <span class="created-at">
+            {{
+              Intl.DateTimeFormat('fr-FR', dateOptions).format(
+                new Date(fields.date)
+              )
+            }}
+          </span>
+        </p>
+        <slices-block
+          :slices="slices"
+          :num="1"
+          :scrollY="scrollY"
+          :parallaxRatio="0.1"
+        />
       </div>
-      <h1 class="blog-title">{{ $prismic.richTextAsPlain(fields.title) }}</h1>
-      <p class="blog-post-meta">
-        <span class="created-at">
-          {{
-            Intl.DateTimeFormat('fr-FR', dateOptions).format(
-              new Date(fields.date)
-            )
-          }}
-        </span>
-      </p>
-      <slices-block :slices="slices" />
     </div>
   </div>
 </template>
@@ -32,6 +41,16 @@ export default {
   },
   components: {
     SlicesBlock
+  },
+  props: {
+    num: {
+      type: Number,
+      default: 0
+    },
+    parallaxRatio: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {
@@ -55,6 +74,9 @@ export default {
     }
   },
   computed: {
+    classnames() {
+      return [`p-whoiam-section--${this.num}`];
+    },
     styles() {
       return {
         paddingTop: `${this.$store.state.resolution.y / 2}px`,
@@ -141,7 +163,7 @@ export default {
       if (this.scrollY < 1 && n.pixelY < 0) {
         // Go to the previous page.
         commit('startWheeling');
-        this.$router.push(`/works/${state.works[state.works.length - 1].key}/`);
+        this.$router.push('/articles/');
       } else {
         // Scroll the content of the current page.
         this.anchorY = MathEx.clamp(
@@ -176,7 +198,7 @@ export default {
       }
     },
     resize() {
-      this.clientHeight = this.$refs['whoiam-wrap'].clientHeight;
+      this.clientHeight = this.$refs['articles-wrap'].clientHeight;
       this.anchorY = MathEx.clamp(
         this.anchorY,
         0,
@@ -195,7 +217,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .p-whoiam-wrap {
   @include l-more-than-mobile {
     margin-right: 7.5%;
@@ -232,6 +254,78 @@ export default {
   color: #a9a9a9;
   font-family: 'Lato', sans-serif;
   margin-bottom: 8px;
+}
+.p-whoiam-heading {
+  font-size: 2.5rem !important;
+  perspective: 500px;
+  line-height: (70 / 60);
+  @include fontSizeAll(40, 40, 20);
+  letter-spacing: 0.15em;
+  @include l-more-than-mobile {
+    margin-bottom: 145px;
+    margin-left: 40%;
+  }
+  @include l-mobile {
+    margin-bottom: 50px;
+  }
+  &__in {
+    display: block;
+
+    transition-property: transform;
+    transform-origin: center left;
+    .view-enter &,
+    .view-asc-leave-to & {
+      transform: translate3d(0, 100px, 30px) rotate3d(1, 0, 0.5, 10deg);
+    }
+    .view-asc-enter &,
+    .view-leave-to & {
+      transform: translate3d(0, -100px, 30px) rotate3d(1, 0, 0.5, -10deg);
+    }
+    .view-enter-to &,
+    .view-asc-enter-to & {
+      transition-duration: 1.1s;
+      transition-delay: 0.8s;
+      transition-timing-function: $easeOutQuad;
+    }
+    .view-leave-to &,
+    .view-asc-leave-to & {
+      transition-duration: 0.65s;
+      transition-timing-function: $easeInQuad;
+    }
+  }
+  &__row {
+    display: block;
+
+    // Transition
+    transition-property: opacity, transform;
+    transform-origin: center left;
+    .view-enter &,
+    .view-asc-enter & {
+      opacity: 0;
+    }
+    .view-enter &,
+    .view-asc-leave-to & {
+      transform: translate3d(0, 100px, 0);
+    }
+    .view-asc-enter &,
+    .view-leave-to & {
+      transform: translate3d(0, -100px, 0);
+    }
+    .view-enter-to &,
+    .view-asc-enter-to & {
+      opacity: 1;
+      transition-duration: 1s;
+      transition-timing-function: $easeOutQuad;
+      @include iterateTransitionDelay(2, 0.1, 0.8);
+    }
+    .view-leave-to &,
+    .view-asc-leave-to & {
+      opacity: 0;
+      transition-duration: 0.6s;
+      transition-timing-function: $easeInQuad;
+      @include iterateTransitionDelay(2, -0.1, 0.1);
+    }
+  }
 }
 /* Media Queries */
 @media (max-width: 767px) {
