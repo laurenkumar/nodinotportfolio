@@ -1,16 +1,3 @@
-<template>
-  <!-- Vue conditional to check if there is any content in document -->
-  <div
-    v-if="hasContent"
-    class="p-view-wrap"
-    ref="articlescat-wrap"
-    :style="styles"
-  >
-    <!-- Vue reference for blog posts component -->
-    <blog-posts :num="1" :scrollY="scrollY" :parallaxRatio="0.1" />
-  </div>
-</template>
-
 <script>
 import sleep from 'js-util/sleep';
 import MathEx from 'js-util/MathEx';
@@ -79,7 +66,11 @@ export default {
       index: 0,
       direction: 1
     });
-    this.$store.commit('showWhoIAmObjs', true);
+    this.$store.commit('showWhoIAmObjs', {
+      index: 1,
+      direction: -1
+    });
+    this.$store.commit('showArticlesObjs', true);
     await sleep(500);
     this.$store.commit('showUI');
     this.isRendering = true;
@@ -192,33 +183,34 @@ export default {
 };
 </script>
 
-<style scoped>
-.home {
-  max-width: 700px;
-  margin: auto;
-  text-align: center;
-}
-.home .blog-avatar {
-  height: 140px;
-  width: 140px;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-  margin: 1em auto;
-}
-.home .blog-description {
-  font-size: 18px;
-  color: #a9a9a;
-  line-height: 30px;
-  margin-bottom: 3rem;
-  padding-bottom: 3rem;
-  font-family: 'Lato', sans-serif;
-  border-bottom: 1px solid #dadada;
-}
-/* Media Queries */
-@media (max-width: 767px) {
-  .home {
-    padding: 0 20px;
+<template lang="pug">
+  .p-view-wrap(
+    v-if="hasContent"
+    ref="articlescat-wrap"
+    :style="styles"
+  )
+    blog-posts(
+      :num="1"
+      :scrollY="scrollY"
+      :parallaxRatio="0.1"
+    )
+</template>
+
+<style lang="scss">
+.p-whoiam-wrap {
+  @include l-more-than-mobile {
+    margin-right: 7.5%;
+    margin-left: 7.5%;
+    padding-bottom: 300px;
+  }
+  @include l-mobile {
+    margin-right: 44px;
+    margin-left: 44px;
+    padding-bottom: 44px;
+  }
+  &__in {
+    position: relative;
+    margin-top: -25px;
   }
 }
 </style>

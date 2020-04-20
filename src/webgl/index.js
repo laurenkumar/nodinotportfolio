@@ -235,6 +235,20 @@ export default class WebGLContent {
       this.petalFallGroup.hide();
     }
   }
+  showArticlesObjs(bool) {
+    if (bool === true) {
+      this.petalFallGroup.show();
+    } else {
+      this.petalFallGroup.hide();
+    }
+  }
+  showArticleObjs(bool) {
+    if (bool === true) {
+      this.petalFallGroup.hide();
+    } else {
+      this.petalFallGroup.hide();
+    }
+  }
   update() {
     const { mouse } = store.state;
 

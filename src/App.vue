@@ -17,7 +17,8 @@ export default {
     meta: [
       {
         name: 'description',
-        content: 'Je suis un journaliste. Bousillé de rap.'
+        content:
+          'Axel Nodinot - Journaliste société, politique, culture, sport et international. Bousillé de rap. Disponible sur Paris, je recherche des piges ou un CDD/CDI.'
       }
     ]
   },

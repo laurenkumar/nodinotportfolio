@@ -29,3 +29,11 @@
     url('~@/assets/font/3ABD24_0_0.woff') format('woff'),
     url('~@/assets/font/3ABD24_0_0.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'sansSerif';
+  font-display: swap;
+  src: url('~@/assets/font/sansSerif.eot');
+  src:
+    url('~@/assets/font/sansSerif.ttf') format('truetype');
+}

@@ -10,13 +10,14 @@ body {
   position: fixed;
   overflow: hidden;
   color: $color-text;
-  font-family: 'EngraversMTPro';
+  font-family: 'sansSerif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'palt';
   background-color: #1b191c;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .p-global-title__typo, .preloader-initial {
+  font-family: 'EngraversMTPro';
   font-weight: 400;
 }
 a {

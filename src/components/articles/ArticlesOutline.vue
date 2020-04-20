@@ -1,36 +1,3 @@
-<template>
-  <!-- Check blog posts exist -->
-  <div v-if="posts.length !== 0" class="blog-main">
-    <!-- Template for blog posts -->
-    <div
-      v-for="post in posts"
-      :key="post.id"
-      v-bind:post="post"
-      class="blog-post"
-    >
-      <router-link :to="linkResolver(post)">
-        <h2>{{ $prismic.richTextAsPlain(post.data.title) }}</h2>
-        <p class="blog-post-meta">
-          <span class="created-at">
-            {{
-              Intl.DateTimeFormat('fr-FR', dateOptions).format(
-                new Date(post.data.date)
-              )
-            }}
-          </span>
-        </p>
-        <div>
-          <p>{{ getFirstParagraph(post) }}</p>
-        </div>
-      </router-link>
-    </div>
-  </div>
-  <!-- If no blog posts return message -->
-  <div v-else class="blog-main">
-    <p>No Posts published at this time.</p>
-  </div>
-</template>
-
 <script>
 export default {
   name: 'blog-posts',
@@ -87,28 +54,34 @@ export default {
 };
 </script>
 
-<style scoped>
-.blog-main {
-  max-width: 700px;
-  margin: auto;
-}
-.blog-post {
-  margin-bottom: 3rem;
-}
-.blog-post h2 {
-  margin: 0;
-}
-.blog-post-meta {
-  color: #a9a9a;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: 8px;
-  font-size: 16px;
-}
-/* Media Queries */
-@media (max-width: 767px) {
-  .blog-main {
-    padding: 0 20px;
-    font-size: 18px;
-  }
-}
-</style>
+<template>
+  <!-- Check blog posts exist -->
+  <div v-if="posts.length !== 0">
+    <div
+      v-for="post in posts"
+      :key="post.id"
+      v-bind:post="post"
+      class="blog-post"
+    >
+      <router-link :to="linkResolver(post)">
+        <h2>{{ $prismic.richTextAsPlain(post.data.title) }}</h2>
+        <p class="blog-post-meta">
+          <span class="created-at">
+            {{
+              Intl.DateTimeFormat('fr-FR', dateOptions).format(
+                new Date(post.data.date)
+              )
+            }}
+          </span>
+        </p>
+        <div>
+          <p>{{ getFirstParagraph(post) }}</p>
+        </div>
+      </router-link>
+    </div>
+  </div>
+  <!-- If no blog posts return message -->
+  <div v-else class="blog-main">
+    <p>Aucun post publié pour le moment.</p>
+  </div>
+</template>

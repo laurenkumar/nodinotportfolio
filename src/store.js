@@ -97,6 +97,12 @@ export default new Vuex.Store({
     showWhoIAmObjs(state, bool) {
       state.webgl.showWhoIAmObjs(bool);
     },
+    showArticlesObjs(state, bool) {
+      state.webgl.showArticlesObjs(bool);
+    },
+    showArticleObjs(state, bool) {
+      state.webgl.showArticleObjs(bool);
+    },
     startWheeling(state) {
       state.isWheeling = true;
 
