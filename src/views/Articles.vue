@@ -85,6 +85,7 @@ export default {
   },
   methods: {
     update() {
+      this.getContent();
       this.scrollY =
         Math.floor((this.scrollY + (this.anchorY - this.scrollY) / 10) * 100) /
         100;

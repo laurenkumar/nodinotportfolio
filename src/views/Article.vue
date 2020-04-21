@@ -1,5 +1,5 @@
 <template>
-  <div class="p-view-wrap" :style="styles" ref="whoiam-wrap">
+  <div class="p-view-wrap" :style="styles">
     <div class="p-whoiam-wrap" ref="articles-wrap">
       <div class="p-whoiam-wrap__in">
         <div class="back">
@@ -116,6 +116,7 @@ export default {
     });
     this.$store.commit('showArticleObjs', true);
     await sleep(500);
+    this.getContent(this.$route.params.uid);
     this.$store.commit('showUI');
     this.isRendering = true;
     this.resize();
@@ -145,6 +146,7 @@ export default {
       });
     },
     update() {
+      this.getContent(this.$route.params.uid);
       this.scrollY =
         Math.floor((this.scrollY + (this.anchorY - this.scrollY) / 10) * 100) /
         100;
@@ -202,6 +204,7 @@ export default {
       }
     },
     resize() {
+      this.getContent(this.$route.params.uid);
       this.clientHeight = this.$refs['articles-wrap'].clientHeight;
       this.anchorY = MathEx.clamp(
         this.anchorY,
