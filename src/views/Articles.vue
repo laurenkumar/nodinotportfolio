@@ -142,6 +142,7 @@ export default {
       }
     },
     resize() {
+      this.getContent();
       this.clientHeight = this.$refs['articlescat-wrap'].clientHeight;
       this.anchorY = MathEx.clamp(
         this.anchorY,
