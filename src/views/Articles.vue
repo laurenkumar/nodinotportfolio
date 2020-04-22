@@ -29,6 +29,7 @@ export default {
   watch: {
     async '$store.state.resolution.y'() {
       await sleep(10);
+      this.getContent();
       this.resize();
     }
   },
