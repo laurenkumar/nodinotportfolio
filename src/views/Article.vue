@@ -1,41 +1,3 @@
-<template>
-  <div class="p-view-wrap" :style="styles">
-    <div class="p-whoiam-wrap" ref="articles-wrap">
-      <div class="p-whoiam-wrap__in">
-        <div class="back">
-          <span class="p-articles-heading__in">
-            <span class="p-whoiam-heading__row">
-              <router-link to="./">Retour</router-link>
-            </span>
-          </span>
-        </div>
-        <h1 class="blog-title p-whoiam-heading">
-          <span class="p-articles-heading__in">
-            <span class="p-whoiam-heading__row">
-              {{ $prismic.richTextAsPlain(fields.title) }}
-            </span>
-          </span>
-        </h1>
-        <p class="blog-post-meta">
-          <span class="created-at">
-            {{
-              Intl.DateTimeFormat('fr-FR', dateOptions).format(
-                new Date(fields.date)
-              )
-            }}
-          </span>
-        </p>
-        <slices-block
-          :slices="slices"
-          :num="1"
-          :scrollY="scrollY"
-          :parallaxRatio="0.1"
-        />
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 import sleep from 'js-util/sleep';
 import MathEx from 'js-util/MathEx';
@@ -229,6 +191,44 @@ export default {
 };
 </script>
 
+<template>
+  <div class="p-view-wrap">
+    <div class="p-whoiam-wrap" ref="articles-wrap" :style="styles">
+      <div class="p-whoiam-wrap__in">
+        <div class="back">
+          <span class="p-articles-heading__in">
+            <span class="p-articlein-heading__row">
+              <router-link to="./">Retour</router-link>
+            </span>
+          </span>
+        </div>
+        <h1 class="blog-title p-articlein-heading">
+          <span class="p-articles-heading__in">
+            <span class="p-articlein-heading__row">
+              {{ $prismic.richTextAsPlain(fields.title) }}
+            </span>
+          </span>
+        </h1>
+        <p class="p-articles-heading__in">
+          <span class="p-articlein-heading__row">
+            {{
+              Intl.DateTimeFormat('fr-FR', dateOptions).format(
+                new Date(fields.date)
+              )
+            }}
+          </span>
+        </p>
+        <slices-block
+          :slices="slices"
+          :num="1"
+          :scrollY="scrollY"
+          :parallaxRatio="0.1"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
 <style lang="scss">
 .p-whoiam-wrap {
   @include l-more-than-mobile {
@@ -246,29 +246,8 @@ export default {
     margin-top: -25px;
   }
 }
-.post-part.single a {
-  text-decoration: none;
-  background: -webkit-linear-gradient(
-    top,
-    rgba(0, 0, 0, 0) 75%,
-    rgba(0, 0, 0, 0.8) 75%
-  );
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 75%,
-    rgba(0, 0, 0, 0.8) 75%
-  );
-  background-repeat: repeat-x;
-  background-size: 2px 2px;
-  background-position: 0 23px;
-}
-.blog-post-meta {
-  color: #a9a9a9;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: 8px;
-}
-.p-whoiam-heading {
-  font-size: 2.5rem !important;
+.p-articlein-heading {
+  font-size: 1.5rem !important;
   perspective: 500px;
   line-height: (70 / 60);
   @include fontSizeAll(40, 40, 20);

@@ -47,7 +47,7 @@ export default {
     },
     //Function to get the first paragraph of text in a blog post and limit the displayed text at 300 characters
     getFirstParagraph(post) {
-      const textLimit = 300;
+      const textLimit = 150;
       const slices = post.data.body;
       let firstParagraph = '';
       let haveFirstParagraph = false;
@@ -87,7 +87,7 @@ export default {
       :key="post.id"
       class="p-whoiam-wrap__in"
       v-bind:post="post"
-      :num="1"
+      :num="post.count"
       :scrollY="scrollY"
       :parallaxRatio="0.1"
     >
@@ -151,13 +151,16 @@ export default {
     }
   }
 }
+.p-articles-section:last-child {
+  margin-bottom: 40px !important;
+}
 .p-articles-section {
   text-align: justify;
   @include l-more-than-mobile {
     width: 1000 / 1360 * 100%;
   }
   @include l-mobile {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
   &--1 {
     @include l-more-than-mobile {
@@ -224,7 +227,7 @@ export default {
 .p-articles-heading {
   perspective: 500px;
   line-height: (70 / 60);
-  @include fontSizeAll(30, 60, 30);
+  @include fontSizeAll(20, 20, 20);
   letter-spacing: 0.15em;
   @include l-more-than-mobile {
     margin-right: 40%;
@@ -232,7 +235,7 @@ export default {
     margin-bottom: 0;
   }
   @include l-mobile {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
   &__in {
     display: block;

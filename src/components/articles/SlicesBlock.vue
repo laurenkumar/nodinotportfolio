@@ -1,5 +1,26 @@
+<script>
+// Imports for all slices
+const QuoteSlice = () => import('./slices/QuoteSlice.vue');
+const TextSlice = () => import('./slices/TextSlice.vue');
+const ImageCaptionSlice = () => import('./slices/ImageCaptionSlice.vue');
+export default {
+  props: ['slices', 'num', 'scrollY'],
+  name: 'slices-block',
+  components: {
+    QuoteSlice,
+    TextSlice,
+    ImageCaptionSlice
+  },
+  computed: {
+    classnames() {
+      return [`p-whoiam-section--${this.num}`];
+    }
+  }
+};
+</script>
+
 <template>
-  <section class="p-who-section">
+  <section class="p-who-section" :scrollY="scrollY">
     <!-- Slice section template -->
     <section v-for="(slice, index) in slices" :key="'slice-' + index">
       <!-- Text slice template -->
@@ -19,26 +40,6 @@
   </section>
 </template>
 
-<script>
-// Imports for all slices
-const QuoteSlice = () => import('./slices/QuoteSlice.vue');
-const TextSlice = () => import('./slices/TextSlice.vue');
-const ImageCaptionSlice = () => import('./slices/ImageCaptionSlice.vue');
-export default {
-  props: ['slices'],
-  name: 'slices-block',
-  components: {
-    QuoteSlice,
-    TextSlice,
-    ImageCaptionSlice
-  },
-  computed: {
-    classnames() {
-      return [`p-whoiam-section--${this.num}`];
-    }
-  }
-};
-</script>
 <style lang="scss">
 .p-who-section {
   text-align: justify;
