@@ -24,16 +24,23 @@ export default {
   },
   computed: {
     classnames() {
-      return [`p-whoiam-section--${this.num}`];
+      return [`p-articles-section--${this.num}`];
     }
   },
   methods: {
     getPosts() {
       //Query to get blog posts
       this.$prismic.client
-        .query(this.$prismic.Predicates.at('document.type', 'post'), {
-          orderings: '[my.post.date desc]'
-        })
+        .query(
+          this.$prismic.Predicates.any(
+            'document.tags',
+            ['rap', 'societe'],
+            'post'
+          ),
+          {
+            orderings: '[my.post.date desc]'
+          }
+        )
         .then(response => {
           this.posts = response.results;
         });
@@ -78,15 +85,22 @@ export default {
     <div
       v-for="post in posts"
       :key="post.id"
+      class="p-whoiam-wrap__in"
       v-bind:post="post"
-      class="blog-post"
+      :num="1"
+      :scrollY="scrollY"
+      :parallaxRatio="0.1"
     >
       <router-link :to="linkResolver(post)">
-        <h2 class="p-whoiam-heading">
-          {{ $prismic.richTextAsPlain(post.data.title) }}
+        <h2 class="p-articles-heading">
+          <span class="p-articles-heading__in">
+            <span class="p-whoiam-heading__row">
+              {{ $prismic.richTextAsPlain(post.data.title) }}
+            </span>
+          </span>
         </h2>
         <p
-          class="blog-post-meta p-whoiam-section"
+          class="blog-post-meta p-articles-section"
           :class="classnames"
           :scrollY="scrollY"
           :parallaxRatio="parallaxRatio"
@@ -100,7 +114,7 @@ export default {
           </span>
         </p>
         <div>
-          <p class="p-whoiam-section">{{ getFirstParagraph(post) }}</p>
+          <p class="p-articles-section">{{ getFirstParagraph(post) }}</p>
         </div>
       </router-link>
     </div>
@@ -111,10 +125,36 @@ export default {
 </template>
 
 <style lang="scss">
-.p-whoiam-section {
+.p-whoiam-wrap {
+  &__in {
+    // Transition
+    transition-property: transform;
+    transform-origin: center left;
+    .view-enter &,
+    .view-asc-leave-to & {
+      transform: translate3d(0, 100px, 30px) rotate3d(1, 0, 0.5, 10deg);
+    }
+    .view-asc-enter &,
+    .view-leave-to & {
+      transform: translate3d(0, -100px, 30px) rotate3d(1, 0, 0.5, -10deg);
+    }
+    .view-enter-to &,
+    .view-asc-enter-to & {
+      transition-duration: 1.1s;
+      transition-delay: 0.8s;
+      transition-timing-function: $easeOutQuad;
+    }
+    .view-leave-to &,
+    .view-asc-leave-to & {
+      transition-duration: 0.65s;
+      transition-timing-function: $easeInQuad;
+    }
+  }
+}
+.p-articles-section {
   text-align: justify;
   @include l-more-than-mobile {
-    width: 500 / 1360 * 100%;
+    width: 1000 / 1360 * 100%;
   }
   @include l-mobile {
     margin-bottom: 50px;
@@ -181,14 +221,15 @@ export default {
     transition-timing-function: $easeInQuad;
   }
 }
-.p-whoiam-heading {
+.p-articles-heading {
   perspective: 500px;
   line-height: (70 / 60);
-  @include fontSizeAll(60, 60, 30);
+  @include fontSizeAll(30, 60, 30);
   letter-spacing: 0.15em;
   @include l-more-than-mobile {
-    margin-bottom: 145px;
-    margin-left: 40%;
+    margin-right: 40%;
+    margin-left: 0;
+    margin-bottom: 0;
   }
   @include l-mobile {
     margin-bottom: 50px;

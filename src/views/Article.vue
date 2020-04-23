@@ -3,10 +3,18 @@
     <div class="p-whoiam-wrap" ref="articles-wrap">
       <div class="p-whoiam-wrap__in">
         <div class="back">
-          <router-link to="./">Retour</router-link>
+          <span class="p-articles-heading__in">
+            <span class="p-whoiam-heading__row">
+              <router-link to="./">Retour</router-link>
+            </span>
+          </span>
         </div>
         <h1 class="blog-title p-whoiam-heading">
-          {{ $prismic.richTextAsPlain(fields.title) }}
+          <span class="p-articles-heading__in">
+            <span class="p-whoiam-heading__row">
+              {{ $prismic.richTextAsPlain(fields.title) }}
+            </span>
+          </span>
         </h1>
         <p class="blog-post-meta">
           <span class="created-at">
@@ -169,7 +177,7 @@ export default {
       if (this.scrollY < 1 && n.pixelY < 0) {
         // Go to the previous page.
         commit('startWheeling');
-        this.$router.push('/articles/');
+        this.$router.push('/blog/');
       } else {
         // Scroll the content of the current page.
         this.anchorY = MathEx.clamp(
@@ -188,7 +196,7 @@ export default {
       if (state.isTouchMoving === true) {
         if (this.scrollY < 1 && state.touchMove.y > 10) {
           // Go to the previous page.
-          dispatch('debounceRouterPush', '/articles');
+          dispatch('debounceRouterPush', '/blog/');
           commit('touchEnd');
         } else {
           // Scroll the content of the current page.

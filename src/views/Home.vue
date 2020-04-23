@@ -54,7 +54,7 @@ export default {
         commit('startWheeling');
 
         if (n.pixelY > 0) {
-          this.$router.push(`/works/${state.works[0].key}/`);
+          this.$router.push(`/articles/${state.works[0].key}/`);
         }
       }
     },
@@ -63,7 +63,7 @@ export default {
 
       if (state.isTouchMoving === true) {
         if (state.touchMove.y < -10) {
-          dispatch('debounceRouterPush', `/works/${state.works[0].key}/`);
+          dispatch('debounceRouterPush', `/articles/${state.works[0].key}/`);
           commit('touchEnd');
         }
       }

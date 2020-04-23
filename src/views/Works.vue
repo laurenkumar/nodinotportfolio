@@ -92,15 +92,15 @@ export default {
           // go to the next page.
           if (state.currentWorksId < state.works.length - 1) {
             const i = state.currentWorksId + 1;
-            this.$router.push(`/works/${state.works[i].key}/`);
+            this.$router.push(`/articles/${state.works[i].key}/`);
           } else {
-            this.$router.push('/who-i-am/');
+            this.$router.push('/qui-suis-je/');
           }
         } else {
           // go to the previous page.
           if (state.currentWorksId > 0) {
             const i = state.currentWorksId - 1;
-            this.$router.push(`/works/${state.works[i].key}/`);
+            this.$router.push(`/articles/${state.works[i].key}/`);
           } else {
             this.$router.push('/');
           }
@@ -115,16 +115,16 @@ export default {
           // go to the next page.
           if (state.currentWorksId < state.works.length - 1) {
             const i = state.currentWorksId + 1;
-            dispatch('debounceRouterPush', `/works/${state.works[i].key}/`);
+            dispatch('debounceRouterPush', `/articles/${state.works[i].key}/`);
           } else {
-            dispatch('debounceRouterPush', '/who-i-am/');
+            dispatch('debounceRouterPush', '/qui-suis-je/');
           }
           commit('touchEnd');
         } else if (state.touchMove.y > 10) {
           // go to the previous page.
           if (state.currentWorksId > 0) {
             const i = state.currentWorksId - 1;
-            dispatch('debounceRouterPush', `/works/${state.works[i].key}/`);
+            dispatch('debounceRouterPush', `/articles/${state.works[i].key}/`);
           } else {
             dispatch('debounceRouterPush', '/');
           }
@@ -150,7 +150,7 @@ export default {
       :title = 'item.title'
       :description = 'item.description'
       :credit = 'item.credit'
-      :href = 'item.href'
+      :href = 'item.key'
       )
 </template>
 

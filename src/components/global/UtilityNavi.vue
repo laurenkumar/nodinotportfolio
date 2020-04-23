@@ -46,7 +46,7 @@ export default {
 <template lang="pug">
   .p-utility-navi
     router-link.p-utility-navi__label(
-      to = '/who-i-am/'
+      to = '/qui-suis-je/'
       :class = 'classnames'
       @mouseenter.native = 'enter'
       @mouseleave.native = 'leave'

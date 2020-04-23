@@ -85,7 +85,6 @@ export default {
   },
   methods: {
     update() {
-      this.getContent();
       this.scrollY =
         Math.floor((this.scrollY + (this.anchorY - this.scrollY) / 10) * 100) /
         100;
@@ -108,7 +107,9 @@ export default {
       if (this.scrollY < 1 && n.pixelY < 0) {
         // Go to the previous page.
         commit('startWheeling');
-        this.$router.push(`/works/${state.works[state.works.length - 1].key}/`);
+        this.$router.push(
+          `/articles/${state.works[state.works.length - 1].key}/`
+        );
       } else {
         // Scroll the content of the current page.
         this.anchorY = MathEx.clamp(
@@ -129,7 +130,7 @@ export default {
           // Go to the previous page.
           dispatch(
             'debounceRouterPush',
-            `/works/${state.works[state.works.length - 1].key}/`
+            `/articles/${state.works[state.works.length - 1].key}/`
           );
           commit('touchEnd');
         } else {
@@ -208,6 +209,28 @@ export default {
   &__in {
     position: relative;
     margin-top: -25px;
+    // Transition
+    transition-property: transform;
+    transform-origin: center left;
+    .view-enter &,
+    .view-asc-leave-to & {
+      transform: translate3d(0, 100px, 30px) rotate3d(1, 0, 0.5, 10deg);
+    }
+    .view-asc-enter &,
+    .view-leave-to & {
+      transform: translate3d(0, -100px, 30px) rotate3d(1, 0, 0.5, -10deg);
+    }
+    .view-enter-to &,
+    .view-asc-enter-to & {
+      transition-duration: 1.1s;
+      transition-delay: 0.8s;
+      transition-timing-function: $easeOutQuad;
+    }
+    .view-leave-to &,
+    .view-asc-leave-to & {
+      transition-duration: 0.65s;
+      transition-timing-function: $easeInQuad;
+    }
   }
 }
 </style>

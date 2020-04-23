@@ -4,11 +4,11 @@ export default function(doc) {
   }
 
   if (doc.type === 'blog') {
-    return '/articles';
+    return '/blog';
   }
 
   if (doc.type === 'post') {
-    return '/articles/' + doc.uid;
+    return '/blog/' + doc.uid;
   }
 
   return '/not-found';

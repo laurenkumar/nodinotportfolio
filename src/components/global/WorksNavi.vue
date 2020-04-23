@@ -65,7 +65,7 @@ export default {
     },
     transit(i) {
       const { state, dispatch } = this.$store;
-      dispatch('debounceRouterPush', `/works/${state.works[i].key}/`);
+      dispatch('debounceRouterPush', `/articles/${state.works[i].key}/`);
     },
     anchorEnter(i) {
       if (this.$store.state.isEnabledTouch === true) return;

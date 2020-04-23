@@ -104,7 +104,9 @@ export default {
       if (this.scrollY < 1 && n.pixelY < 0) {
         // Go to the previous page.
         commit('startWheeling');
-        this.$router.push(`/works/${state.works[state.works.length - 1].key}/`);
+        this.$router.push(
+          `/articles/${state.works[state.works.length - 1].key}/`
+        );
       } else {
         // Scroll the content of the current page.
         this.anchorY = MathEx.clamp(
@@ -125,7 +127,7 @@ export default {
           // Go to the previous page.
           dispatch(
             'debounceRouterPush',
-            `/works/${state.works[state.works.length - 1].key}/`
+            `/articles/${state.works[state.works.length - 1].key}/`
           );
           commit('touchEnd');
         } else {

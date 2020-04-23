@@ -134,7 +134,7 @@ export default {
         :class = 'linkLineClassnames'
         )
       router-link.p-work-outline__link(
-        to = '/articles'
+        to = '/blog'
         @mouseenter = 'enter'
         @mouseleave = 'leave'
         )

@@ -22,22 +22,22 @@ const router = new Router({
       component: Home
     },
     {
-      path: '/works/:key',
+      path: '/articles/:key',
       name: 'articles',
       component: Works
     },
     {
-      path: '/who-i-am',
+      path: '/qui-suis-je',
       name: 'who-i-am',
       component: WhoIAm
     },
     {
-      path: '/articles',
+      path: '/blog',
       name: 'blog',
       component: Articles
     },
     {
-      path: '/articles/:uid',
+      path: '/blog/:uid',
       name: 'article',
       component: Article
     },
