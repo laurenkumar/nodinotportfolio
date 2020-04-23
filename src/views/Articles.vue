@@ -74,6 +74,7 @@ export default {
     await sleep(500);
     this.$store.commit('showUI');
     this.isRendering = true;
+    console.log(this.$refs['articlescat-wrap'].clientHeight);
     this.resize();
     this.update();
   },
@@ -143,7 +144,6 @@ export default {
       }
     },
     resize() {
-      this.getContent();
       this.clientHeight = this.$refs['articlescat-wrap'].clientHeight;
       this.anchorY = MathEx.clamp(
         this.anchorY,
