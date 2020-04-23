@@ -188,10 +188,7 @@ export default {
       if (state.isTouchMoving === true) {
         if (this.scrollY < 1 && state.touchMove.y > 10) {
           // Go to the previous page.
-          dispatch(
-            'debounceRouterPush',
-            `/works/${state.works[state.works.length - 1].key}/`
-          );
+          dispatch('debounceRouterPush', '/articles');
           commit('touchEnd');
         } else {
           // Scroll the content of the current page.

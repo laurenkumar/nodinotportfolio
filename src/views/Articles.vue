@@ -47,7 +47,6 @@ export default {
     next();
   },
   async created() {
-    this.getContent();
     window.addEventListener('wheel', this.wheel, { passive: false });
     window.addEventListener('touchstart', this.touchstart);
     window.addEventListener('touchmove', this.touchmove);
@@ -55,6 +54,7 @@ export default {
     this.anchorY = 0;
     this.anchorYPrev = 0;
     this.$store.commit('setScrollProgress', 0);
+    this.getContent();
   },
   async mounted() {
     this.$store.commit('changeBackground', {
