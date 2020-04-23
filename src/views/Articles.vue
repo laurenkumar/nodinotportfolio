@@ -74,7 +74,6 @@ export default {
     await sleep(500);
     this.$store.commit('showUI');
     this.isRendering = true;
-    console.log(this.$refs['articlescat-wrap'].clientHeight);
     this.resize();
     this.update();
   },
