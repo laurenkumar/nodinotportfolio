@@ -163,10 +163,8 @@ export default {
           this.fields.headline = document.data.headline;
           this.fields.description = document.data.description;
           this.fields.image = document.data.image.url;
-          //Check that the blog home contains content
           this.checkForContent();
         } else {
-          //returns error page
           this.$router.push({ name: 'not-found' });
         }
       });
@@ -186,16 +184,14 @@ export default {
 </script>
 
 <template lang="pug">
-  .p-view-wrap(
-    v-if="hasContent"
-    ref="articlescat-wrap"
-    :style="styles"
-  )
-    blog-posts(
-      :num="1"
-      :scrollY="scrollY"
-      :parallaxRatio="0.1"
+  .p-view-wrap
+    .p-whoiam-wrap(
+      v-if="hasContent"
+      ref="articlescat-wrap"
+      :style="styles"
     )
+      .p-whoiam-wrap__in
+        blog-posts
 </template>
 
 <style lang="scss">
