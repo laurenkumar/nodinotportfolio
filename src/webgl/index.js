@@ -143,9 +143,9 @@ export default class WebGLContent {
       })
     ]).then(response => {
       // Initialize all instance on WebGL scene.
-      const geometrySkullHead = response[0].children[1].geometry;
-      const geometrySkullJaw = response[0].children[0].geometry;
-      const geometryPetal1 = response[1].children[0].geometry;
+      const geometrySkullHead = response[0].children[0].geometry;
+      const geometrySkullJaw = response[0].children[1].geometry;
+      const geometryPetal1 = response[1].children[1].geometry;
       const geometryPetal2 = response[1].children[1].geometry;
       const titleTex = response[2];
       const noiseTex = response[3];
@@ -307,7 +307,6 @@ export default class WebGLContent {
   }
   resize() {
     const { resolution } = store.state;
-
     this.camera.resize();
     this.skull.resize();
     this.title.resize();

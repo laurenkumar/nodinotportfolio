@@ -1,6 +1,7 @@
 export default [
   {
     key: 'rap',
+    num: 1,
     title: 'Articles Rap',
     shortTitle: 'Articles Rap',
     description: 'Retrouvez ici mes différents articles sur le rap.',
@@ -10,6 +11,7 @@ export default [
   },
   {
     key: 'societe',
+    num: 2,
     title: 'Articles Société',
     shortTitle: 'Articles Société',
     description: 'Retrouvez ici mes différents articles sur la Société.',

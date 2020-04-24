@@ -9,7 +9,7 @@ varying vec2 vUv;
 
 void main(void) {
   // coordinate transformation
-  vec4 mPosition = modelMatrix * vec4(position, 1.0);
+  vec4 mPosition = modelMatrix * vec4(position, 0.3);
 
   vUv = uv;
 

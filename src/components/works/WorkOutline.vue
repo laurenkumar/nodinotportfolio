@@ -55,6 +55,10 @@ export default {
       type: String,
       default: ''
     },
+    num: {
+      type: Number,
+      default: 1
+    },
     description: {
       type: String,
       default: ''
@@ -134,7 +138,15 @@ export default {
         :class = 'linkLineClassnames'
         )
       router-link.p-work-outline__link(
-        to = '/blog'
+        v-if = 'num === 1'
+        to = '/blog/rap'
+        @mouseenter = 'enter'
+        @mouseleave = 'leave'
+        )
+        |Lire
+      router-link.p-work-outline__link(
+        v-else-if = 'num === 2'
+        to = '/blog/societe'
         @mouseenter = 'enter'
         @mouseleave = 'leave'
         )

@@ -82,7 +82,7 @@ export default class SkullAura extends THREE.Mesh {
     this.colorRangeMinBase = 0.3;
     this.isActive = false;
     this.isShown = false;
-    this.position.set(0, -4, 8);
+    this.position.set(0, -3, 3);
   }
   start(postEffectTex, noiseTex) {
     this.isActive = true;

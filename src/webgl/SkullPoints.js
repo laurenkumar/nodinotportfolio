@@ -8,7 +8,7 @@ import fs from '@/webgl/glsl/SkullPoints.fs';
 import PIXEL_RATIO from '@/const/PIXEL_RATIO';
 
 const DURATION = 4;
-const NUM = 360;
+const NUM = 150;
 const DURATION_SHOW = 2;
 const DELAY_SHOW = 4;
 const DURATION_HIDE = 1;

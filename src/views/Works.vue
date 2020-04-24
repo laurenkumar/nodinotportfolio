@@ -147,6 +147,7 @@ export default {
       v-if = 'item.key === $route.params.key'
       :key = 'item.key'
       :index = 'index'
+      :num = 'item.num'
       :title = 'item.title'
       :description = 'item.description'
       :credit = 'item.credit'

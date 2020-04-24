@@ -10,7 +10,7 @@ import PIXEL_RATIO from '@/const/PIXEL_RATIO';
 const DURATION = 1.4;
 const DELAY_SHOW = 2.75;
 const DURATION_HIDE = 1;
-const NUM = 800;
+const NUM = 400;
 
 export default class SkullPointsFirst extends THREE.Points {
   constructor() {

@@ -12,7 +12,7 @@ export default class SkullAuraCamera extends THREE.PerspectiveCamera {
     this.far = 1000;
     this.setFocalLength(50);
     this.distance =
-      Math.abs(Math.tan(MathEx.radians(this.fov) / 2) * 2) * 50 * 2;
+      Math.abs(Math.tan(MathEx.radians(this.fov) / 2) * 2) * 20 * 2;
   }
   update(camera) {
     this.position

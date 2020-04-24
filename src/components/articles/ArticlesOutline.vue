@@ -29,12 +29,11 @@ export default {
   },
   methods: {
     getPosts() {
-      //Query to get blog posts
       this.$prismic.client
         .query(
           this.$prismic.Predicates.any(
             'document.tags',
-            ['rap', 'societe'],
+            [this.$route.params.tag],
             'post'
           ),
           {
@@ -45,7 +44,6 @@ export default {
           this.posts = response.results;
         });
     },
-    //Function to get the first paragraph of text in a blog post and limit the displayed text at 300 characters
     getFirstParagraph(post) {
       const textLimit = 150;
       const slices = post.data.body;

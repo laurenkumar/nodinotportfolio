@@ -140,7 +140,7 @@ export default class SkullBody extends THREE.Group {
     this.lookEuler.copy(this.rotation);
     this.rotation.set(
       this.lookEuler.x +
-        MathEx.radians(5 + (1.0 - alphaRaise) * 70 + alphaScream * -20),
+        MathEx.radians(5 + (1.0 - alphaRaise) * 70 + alphaScream * 20),
       this.lookEuler.y + MathEx.radians(0),
       this.lookEuler.z + MathEx.radians(0)
     );
@@ -159,10 +159,10 @@ export default class SkullBody extends THREE.Group {
     // loop animation
     const loopDegree = (Math.sin(this.timeLoop) * 0.5 + 0.5) * 8;
 
-    this.head.rotation.set(MathEx.radians(alphaScream - loopDegree), 80, 80);
+    this.head.rotation.set(MathEx.radians(70 - loopDegree), 0, 0);
 
     // calculation the scale.
-    const scale = alphaShow * 0.2 + 0.2 + alphaHide * 0.1 + alphaScream * 0.2;
+    const scale = alphaShow * 0.2 + 4 + alphaHide * 0.1 + alphaScream * 0.2;
     this.scale.set(scale, scale, scale);
 
     // fluctuation of the color

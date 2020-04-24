@@ -32,12 +32,12 @@ const router = new Router({
       component: WhoIAm
     },
     {
-      path: '/blog',
+      path: '/blog/:tag',
       name: 'blog',
       component: Articles
     },
     {
-      path: '/blog/:uid',
+      path: '/blog/:tag/:uid',
       name: 'article',
       component: Article
     },

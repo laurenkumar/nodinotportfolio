@@ -18,7 +18,7 @@ export default {
     },
     stylesRotateRect() {
       return {
-        transform: `rotate(${this.ratio * 354}deg)`
+        transform: `rotate(${this.ratio * 360}deg)`
       };
     }
   }
@@ -49,21 +49,20 @@ export default {
 <style lang="scss">
 .preloader-progress {
   position: absolute;
-  animation-name: rotate;
   animation-duration: 20s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   @include l-more-than-mobile {
     width: 252px;
     height: 252px;
-    top: calc(50% - 126px);
-    left: calc(50% - 126px);
+    top: calc(50% - 100px);
+    left: calc(50% - 97px);
   }
   @include l-mobile {
     width: 150px;
     height: 150px;
-    top: calc(50% - 75px);
-    left: calc(50% - 75px);
+    top: calc(50% - 55px);
+    left: calc(50% - 58px);
   }
   &__inner {
     //
@@ -103,7 +102,7 @@ export default {
     }
   }
   .mask-rotate-group {
-    transform: rotate(34deg);
+    transform: rotate(30deg);
     transform-origin: center center;
   }
   .mask-rotate-rect {

@@ -139,7 +139,7 @@ export default {
       if (this.scrollY < 1 && n.pixelY < 0) {
         // Go to the previous page.
         commit('startWheeling');
-        this.$router.push('/blog/');
+        this.$router.push('./');
       } else {
         // Scroll the content of the current page.
         this.anchorY = MathEx.clamp(
@@ -193,7 +193,7 @@ export default {
 
 <template>
   <div class="p-view-wrap">
-    <div class="p-whoiam-wrap" ref="articles-wrap" :style="styles">
+    <div class="p-whoiam-wrap" :style="styles" ref="articles-wrap">
       <div class="p-whoiam-wrap__in">
         <div class="back">
           <span class="p-articles-heading__in">

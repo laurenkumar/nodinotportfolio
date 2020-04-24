@@ -187,8 +187,8 @@ export default {
   .p-view-wrap
     .p-whoiam-wrap(
       v-if="hasContent"
-      ref="articlescat-wrap"
       :style="styles"
+      ref="articlescat-wrap"
     )
       .p-whoiam-wrap__in
         blog-posts
