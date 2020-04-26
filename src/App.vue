@@ -18,7 +18,7 @@ export default {
       {
         name: 'description',
         content:
-          'Axel Nodinot - Journaliste société, politique, culture, sport et international. Bousillé de rap. Disponible sur Paris, je recherche des piges ou un CDD/CDI.'
+          'Axel Nodinot - Journaliste société, politique, culture, sport et international. Bousillé de rap. Disponible sur Paris ou en remote, je recherche des piges ou un CDD/CDI.'
       }
     ]
   },

@@ -10,7 +10,7 @@ import './registerServiceWorker';
 Vue.config.productionTip = false;
 
 Vue.use(PrismicVue, {
-  endpoint: 'https://axelnodinot.cdn.prismic.io/api/v2',
+  endpoint: 'https://axelnodinotarticles.cdn.prismic.io/api/v2',
   linkResolver,
   htmlSerializer
 });

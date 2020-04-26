@@ -117,8 +117,16 @@ export default {
       </router-link>
     </div>
   </div>
-  <div v-else class="blog-main">
-    <p>Aucun post publié pour le moment.</p>
+  <div v-else>
+    <div class="p-whoiam-wrap__in" :scrollY="scrollY" :parallaxRatio="0.1">
+      <h2 class="p-articles-heading">
+        <span class="p-articles-heading__in">
+          <span class="p-whoiam-heading__row">
+            Aucun post publié dans cette catégorie pour le moment.
+          </span>
+        </span>
+      </h2>
+    </div>
   </div>
 </template>
 
