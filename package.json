@@ -44,7 +44,7 @@
     "eslint-plugin-vue": "^6.1.2",
     "glslify-import-loader": "^0.1.2",
     "glslify-loader": "^2.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^9.0.0",
     "prettier": "^1.19.1",
     "raw-loader": "^4.0.0",
     "sass-loader": "^8.0.2",
